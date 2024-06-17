@@ -1,43 +1,16 @@
 'use client';
-import { Form, Formik, useField } from 'formik';
+import { Form, Formik } from 'formik';
+import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
-import { useRouter } from "next/navigation";
-
-interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    label: string;
-    name: string;
-}
-
-export const FormInput = ({ label, name, ...props }: FormInputProps) => {
-    const [field, meta] = useField({ ...props, name });
-
-    return (
-        <div className="mt-2">
-            <div>
-                <label className="" htmlFor={props.id || name}>
-                    {label}
-                </label>
-            </div>
-
-            <input
-                className={`mt-2 w-full max-w-xs border-2 px-4 py-3 ${
-                    meta.touched && meta.error && ' border-red-700'
-                }`}
-                {...field}
-                {...props}
-            />
-
-            {meta.touched && meta.error ? (
-                <div className="text-red-700">{meta.error}</div>
-            ) : null}
-        </div>
-    );
-};
+import { FormInput, TextArea } from './components/form';
 
 export default function Home() {
     const router = useRouter();
-    const handleSubmit = () => {
-        console.log('submit');
+    const handleSubmit = (values: {
+        jobTitle: string;
+        jobDescription: string;
+    }) => {
+        console.log('submit values', values);
         router.push('/interview');
     };
     return (
@@ -60,7 +33,7 @@ export default function Home() {
                     <h3 className="py-3 text-xl">Enter job details</h3>
 
                     <FormInput label="Job title" name="jobTitle" type="text" />
-                    <FormInput label="Job description" name="jobDescription" type="text" />
+                    <TextArea label="Job description" name="jobDescription" />
 
                     <button type="submit" className="btn-submit">
                         Submit
