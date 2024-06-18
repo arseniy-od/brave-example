@@ -17,13 +17,13 @@ export const FormInput = ({ label, name, ...props }: FormInputProps) => {
     return (
         <div className="mt-2">
             <div>
-                <label className="" htmlFor={props.id || name}>
+                <label className="text-gray-700" htmlFor={props.id || name}>
                     {label}
                 </label>
             </div>
 
             <input
-                className={`mt-2 w-full max-w-xs border-2 px-4 py-3 ${
+                className={`mt-2 w-full border-2 px-4 py-3 rounded-lg ${
                     meta.touched && meta.error && ' border-red-700'
                 }`}
                 {...field}
@@ -43,11 +43,13 @@ export const TextArea = ({ label, name, ...props }: FormTextAreaProps) => {
     return (
         <div className="mt-2">
             <div>
-                <label htmlFor={props.id || name}>{label}</label>
+                <label className="text-gray-700" htmlFor={props.id || name}>
+                    {label}
+                </label>
             </div>
 
             <textarea
-                className="mt-2 w-full max-w-xs border-2 px-4 py-3"
+                className="mt-2 w-full min-h-32 rounded-lg border-2 px-4 py-3"
                 {...field}
                 {...props}
             />

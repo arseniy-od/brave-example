@@ -30,7 +30,14 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .btn {
+    @apply mt-4 inline-block items-center  text-white text-xl font-bold px-8 py-2 shadow-md hover:bg-gray-300 focus:outline-none rounded-lg;
+  }
   .btn-submit {
-        @apply mt-4 inline-block items-center bg-gray-100 px-8 py-2 shadow-lg hover:bg-gray-300 focus:outline-none;
+        @apply btn bg-indigo-400;
+    }
+  .btn-info {
+        @apply btn bg-green-400;
     }
 }
